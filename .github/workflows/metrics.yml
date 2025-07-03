@@ -1,8 +1,7 @@
-name: GitHub Metrics
-
+name: Metrics
 on:
-  schedule: [{ cron: "0 * * * *" }] # every hour
-  workflow_dispatch:               # allows manual run
+  schedule: [{cron: "0 0 * * *"}] # every day
+  workflow_dispatch:
 
 jobs:
   github-metrics:
@@ -10,9 +9,8 @@ jobs:
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          token: ${{ secrets.METRICS_TOKEN }}
+          # Replace with your GitHub username
+          user: benjamin-nyankson
+          template: classic
           base: header, activity, community, repositories, metadata
           config_timezone: Africa/Accra
-          plugin_languages: yes
-          plugin_isocalendar: yes
-          plugin_achievements: yes
